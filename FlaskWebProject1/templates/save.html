@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    {% for member in tb_uploads3 %}
+    {% if(imagepath==member.imagename) %}
+    <h4 style="color:red">
+        NOTE:<h5>
+            <h4>Save Image by Right click on Image</h4>
+
+            <h3 style="color:darkgreen;">About Accident:</h3>
+            <h4 style="color:grey;">
+                {{member.Content}}
+            </h4>
+            <h3 style="color:darkgreen;">Capture By:</h3>
+            <h4 style="color:grey;">
+                {{member. Uploadedby}}
+            </h4>
+            <h3 style="color:darkgreen;">Date:</h3><h4 style="color:grey;">{{member.DateTime}}</h4>
+            <h3 style="color:darkgreen;">City:</h3><h4 style="color:grey;">{{member.city}}</h4>
+            {% endif %}
+            {% endfor %}
+</body>
+</html>

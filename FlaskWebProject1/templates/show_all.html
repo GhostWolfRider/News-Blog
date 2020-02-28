@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+</head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+    .body {
+        border-style: inset;
+        border-color: black;
+        border-width: 2px 10px 4px 20px;
+    }
+
+    .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+        background-color: red;
+    }
+
+    .navbar1 {
+        margin-bottom: 0;
+        border-radius: 0;
+        background-color: darkcyan;
+    }
+
+    .navbar2 {
+        margin-bottom: 0;
+        border-radius: 0;
+        background-color: yellow;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {
+        height: 450px;
+    }
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+        padding-top: 20px;
+        height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+        background-color: #555;
+        color: white;
+        padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+        .sidenav {
+            height: auto;
+            padding: 15px;
+        }
+
+        .row.content {
+            height: auto;
+        }
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .w3-left, .w3-right, .w3-badge {
+        cursor: pointer;
+    }
+
+    .w3-badge {
+        height: 13px;
+        width: 13px;
+        padding: 0;
+    }
+</style>
+<body class="body">
+
+    <hr />
+    <h3>
+        <a href="{{ url_for('upload_news') }}">
+            Upload News
+        </a>
+    </h3>
+
+    <h3>Uploaded News</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Image name</th>
+                    <th>Caption</th>
+                    <th>Content</th>
+                    <th>Category</th>
+                    <th>DateTime</th>
+                    <th>city</th>
+                    <th>valid</th>
+                    <th>Image View</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for member in tb_uploads3 %}
+                <tr>
+                    <td>{{ member.imagename }}</td>
+                    <td>{{ member.Caption}}</td>
+                    <td>{{ member.Content}}</td>
+                    <td>{{ member.Category}}</td>
+                    <td>{{ member.DateTime}}</td>
+                    <td>{{member.city}}</td>
+                    <td>{{ member.valid}}</td>
+                    <td><a href="{{ url_for('view_image',imagepath=member.imagename) }}">View</a></td>
+                    <td><a href="{{ url_for('approve_news',imagepath=member.imagename) }}">Approve</a></td>
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h3>User's Details</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Userame</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+    </div>
+
+    <tbody>
+        {% for member in tb_login1 %}
+        <tr>
+            <td>{{ member.username }}</td>
+            <td>{{member.city}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+
+</body>
+</html>
